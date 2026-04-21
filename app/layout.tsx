@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, JetBrains_Mono } from "next/font/google";
+import { Analytics } from "@/components/Analytics";
 import "./globals.css";
 
 const fraunces = Fraunces({
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     description: "Full-stack engineer building simulation tools and baseball analytics.",
     images: [
       {
-        url: "/opengraph-image",
+        url: "/api/og",
         width: 1200,
         height: 630,
         alt: "nikko / portfolio",
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "nikko / portfolio",
     description: "Full-stack engineer building simulation tools and baseball analytics.",
-    images: ["/opengraph-image"],
+    images: ["/api/og"],
   },
   robots: {
     index: true,
@@ -83,7 +84,10 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${fraunces.variable} ${jetbrainsMono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }
