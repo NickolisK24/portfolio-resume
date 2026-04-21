@@ -6,11 +6,10 @@ type ContactLink = {
   external?: boolean;
 };
 
-// EDIT ME: real urls, resume pdf, etc.
 const LINKS: ContactLink[] = [
-  { label: "email", href: "mailto:your@email.com" },
+  { label: "email", href: "nickoliskacludis@gmail.com" },
   { label: "github", href: "https://github.com/NickolisK24", external: true },
-  { label: "linkedin", href: "https://linkedin.com/in/nickolis", external: true },
+  { label: "linkedin", href: "https://www.linkedin.com/in/nickolis-kacludis/", external: true },
   { label: "resume.pdf", href: "/resume.pdf", external: true },
 ];
 

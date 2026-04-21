@@ -17,7 +17,7 @@ export function Hero() {
       </h1>
 
       <p className="reveal d3 max-w-[640px] text-[15px] leading-relaxed text-ink-dim">
-        <strong className="font-medium text-ink">Nikko</strong> — full-stack engineer working in
+        <strong className="font-medium text-ink">Nikko</strong> - full-stack engineer working in
         Python, TypeScript, and PostgreSQL. I ship end-to-end systems: data pipelines, simulation
         engines, clean APIs, and the frontends that sit on top. Currently shipping baseball
         analytics and ARPG theorycrafting tools on nights and weekends.
