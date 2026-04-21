@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 
 const COMMANDS = [
   "cat about.md",
@@ -13,7 +13,6 @@ const FALLBACK = COMMANDS[0];
 
 export function CommandBar() {
   const [text, setText] = useState<string>(FALLBACK);
-  const rafRef = useRef<number | null>(null);
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -53,7 +52,6 @@ export function CommandBar() {
 
     return () => {
       clearTimeout(timer);
-      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
     };
   }, []);
 
