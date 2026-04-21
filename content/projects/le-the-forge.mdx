@@ -1,0 +1,75 @@
+---
+slug: le-the-forge
+title: The Forge
+tagline: Build optimization and combat simulation for Last Epoch.
+status: active
+stack:
+  - FastAPI
+  - PostgreSQL
+  - TypeScript
+  - React
+  - Alembic
+  - pytest
+role: Solo engineer
+period: 2025 — present
+order: 1
+featured: true
+summary: >
+  A build optimization and combat simulation tool for Last Epoch. Full stat
+  resolution pipeline, skill damage execution, enemy defense modeling,
+  passive tree renderer, and an ailment system — all grounded in the real
+  game's data files. Six interconnected engines, currently implementing BIS
+  search and expanding the simulation surface.
+links:
+  repo: https://github.com/NickolisK24/le-the-forge
+---
+
+{/* EDIT ME — below is scaffolded copy. Rewrite freely. */}
+
+## Problem
+
+Last Epoch's build optimization problem is genuinely hard: stat resolution
+interacts with passives, idols, affixes, and ailment mechanics in ways that
+most calculators flatten or ignore. I wanted a tool that modeled the real
+interactions well enough that the answers it gave were usable — not just
+directionally suggestive.
+
+## Architecture
+
+Six interconnected pipelines, each owning a clear slice of the calculation:
+
+1. **Stat resolution** — flattens gear, passives, and idols into a resolved
+   stat sheet with provenance.
+2. **Skill damage** — takes the resolved sheet + skill tree and produces
+   per-hit damage distributions.
+3. **Enemy defense** — models resistances, armor, ward interactions for
+   both PvE targets and bosses.
+4. **Combat simulation** — runs the damage pipeline over a time window
+   with realistic uptime and cooldown behavior.
+5. **Crafting** — models affix pools, crafting odds, and expected costs.
+6. **Validation** — cross-checks results against in-game logs and known
+   community benchmarks.
+
+The passive tree data pipeline was built from scratch against the game's
+raw data files, so new patches can be reingested without manual schema
+work.
+
+## Key engineering decisions
+
+- **FastAPI over Flask** for first-class async and clean Pydantic schemas
+  at the API boundary.
+- **Postgres for everything** — gear, patch snapshots, user builds — with
+  Alembic migrations checked in from day one.
+- **Typed contract between backend and frontend** via generated OpenAPI
+  types. Frontend never guesses the shape of a stat block.
+- **Architectural reviews before each major pipeline ships.** Catches the
+  wrong thing earlier than tests do.
+
+## Status
+
+Currently implementing BIS search and expanding the simulation surface
+(more skill trees, more ailment models). Public beta is the next milestone.
+
+## Links
+
+- Repo: [github.com/NickolisK24/le-the-forge](https://github.com/NickolisK24/le-the-forge)

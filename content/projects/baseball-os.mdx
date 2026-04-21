@@ -1,0 +1,63 @@
+---
+slug: baseball-os
+title: BaseballOS
+tagline: Full-stack baseball analytics with a fatigue scoring engine.
+status: deployed
+stack:
+  - Flask
+  - PostgreSQL
+  - React
+  - Tailwind
+  - MLB Stats API
+role: Solo engineer
+period: 2025
+order: 2
+featured: true
+summary: >
+  A full-stack baseball analytics platform with a fatigue scoring engine
+  built on a weighted composite model and risk tiers. Integrates the MLB
+  Stats API, surfaces bullpen usage patterns and prospect insights, and is
+  structured as the primary portfolio piece for my push into the baseball
+  industry.
+links:
+  repo: https://github.com/NickolisK24/baseball-os
+---
+
+{/* EDIT ME — below is scaffolded copy. Rewrite freely. */}
+
+## Problem
+
+Bullpen management is one of the highest-leverage decisions a coaching
+staff makes, and the signal is scattered across pitch counts, back-to-back
+appearances, warm-up usage, and recent workload — none of which live in
+one place. I wanted a tool that collapsed that noise into a single,
+defensible fatigue score you could act on.
+
+## Architecture
+
+Three modules backed by a shared ingestion layer:
+
+1. **Ingestion** — pulls the MLB Stats API on a schedule, normalizes
+   events into a Postgres schema that survives API shape changes.
+2. **Fatigue engine** — weighted composite model over recent appearances,
+   pitch counts, and rest days. Output is a score plus a risk tier.
+3. **UX layer** — React + Tailwind front end with a bullpen board, a
+   prospects view, and per-player drilldowns.
+
+## Key engineering decisions
+
+- **Flask over FastAPI** for this one — I wanted the simplest possible
+  backend while the model was still in flux.
+- **Risk tiers, not just scores** — coaches don't want a raw number, they
+  want "green / yellow / red" with the reason.
+- **Model weights are config, not code** — tuning doesn't require a
+  deploy.
+
+## Status
+
+Deployed and iterating. Next up: pitch-mix-aware fatigue and a prospect
+development timeline view.
+
+## Links
+
+- Repo: [github.com/NickolisK24/baseball-os](https://github.com/NickolisK24/baseball-os)

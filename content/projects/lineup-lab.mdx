@@ -1,0 +1,51 @@
+---
+slug: lineup-lab
+title: Lineup Lab
+tagline: Lineup construction and optimization workspace.
+status: in-progress
+stack:
+  - Python
+  - React
+  - PostgreSQL
+role: Solo engineer
+period: 2026 — present
+order: 3
+featured: true
+summary: >
+  A lineup construction and optimization workspace — experimenting with
+  batter order simulation, matchup-aware projections, and the decision
+  tooling that hitting coaches actually want on a tablet in the dugout.
+links: {}
+---
+
+{/* EDIT ME — below is scaffolded copy. Rewrite freely. */}
+
+## Problem
+
+Lineup construction tools are either too academic (Monte Carlo over a
+season) or too shallow (drag-and-drop with no underlying model). Coaches
+making in-game decisions need something in the middle — matchup-aware,
+fast, and legible on a tablet in the dugout.
+
+## Architecture
+
+- **Projection layer** — per-matchup projections pulled from an ingestion
+  layer shared with BaseballOS.
+- **Lineup simulator** — batter order simulation over the expected plate
+  appearances in a game, not a season.
+- **Workspace UI** — a React front end tuned for tablet-first interactions:
+  big targets, minimal chrome, readable in sunlight.
+
+## Key engineering decisions
+
+- **Shared ingestion with BaseballOS** — the same Postgres schema, so
+  improvements to one project feed the other.
+- **Simulation at game granularity**, not season. Faster feedback, more
+  relevant to in-game decisions.
+- **Tablet-first UI** — dev is done against a tablet viewport from day
+  one, not retrofitted.
+
+## Status
+
+In progress. The projection layer and a first-pass simulator are running;
+the workspace UI is being built out now.
