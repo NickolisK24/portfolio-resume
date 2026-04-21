@@ -7,7 +7,7 @@ type ContactLink = {
 };
 
 const LINKS: ContactLink[] = [
-  { label: "email", href: "nickoliskacludis@gmail.com" },
+  { label: "email", href: "mailto:nickoliskacludis@gmail.com" },
   { label: "github", href: "https://github.com/NickolisK24", external: true },
   { label: "linkedin", href: "https://www.linkedin.com/in/nickolis-kacludis/", external: true },
   { label: "resume.pdf", href: "/resume.pdf", external: true },
