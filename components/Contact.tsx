@@ -10,7 +10,7 @@ const LINKS: ContactLink[] = [
   { label: "email", href: "mailto:nickoliskacludis@gmail.com" },
   { label: "github", href: "https://github.com/NickolisK24", external: true },
   { label: "linkedin", href: "https://www.linkedin.com/in/nickolis-kacludis/", external: true },
-  { label: "resume.pdf", href: "/Nickolis_Kacludis_Resume_1.pdf", external: true },
+  { label: "resume.pdf", href: "/Nickolis_Kacludis_Resume.pdf", external: true },
 ];
 
 export function Contact() {
