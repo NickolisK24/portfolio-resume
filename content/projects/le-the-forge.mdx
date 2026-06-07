@@ -23,7 +23,15 @@ summary: >
   Built around correctness, testability, and trusted extracted game data.
 links:
   repo: https://github.com/NickolisK24/le-the-forge
+  live: https://epochforge.gg
 ---
+
+## Why I Built It
+
+As a long-time ARPG player, I wanted tools that modeled game systems the
+way they actually work instead of relying on approximations. The Forge
+became a platform for deterministic simulation, build planning, and
+trusted game-data analysis.
 
 ## Problem
 
@@ -50,6 +58,9 @@ Six interconnected systems, each owning a clear slice of the calculation:
 6. **Trusted data pipeline** — extracts and validates game data with
    reproducible reports and fail-closed checks.
 
+The passive tree engine currently supports all 542 passive nodes across
+the game's base classes and masteries.
+
 ## Key engineering decisions
 
 - **Deterministic calculations first** — simulation outputs need to be
@@ -71,6 +82,16 @@ Six interconnected systems, each owning a clear slice of the calculation:
   across patches.
 - Keeping the architecture modular enough for future skills, items,
   crafting, and optimizer expansion.
+
+## Current Capabilities
+
+- Passive tree planning and validation
+- Skill tree allocation and effect modeling
+- Stat aggregation and modifier resolution
+- Item, affix, and equipment simulation
+- Combat calculation and defensive modeling
+- Crafting simulation and optimizer foundations
+- Trusted extracted game-data pipeline
 
 ## Status
 

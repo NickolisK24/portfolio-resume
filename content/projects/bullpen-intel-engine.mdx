@@ -25,7 +25,15 @@ summary: >
   tests.
 links:
   repo: https://github.com/NickolisK24/bullpen-intel-engine
+  live: https://baseballos.vercel.app/
 ---
+
+## Why I Built It
+
+Baseball has always been the industry I wanted to work in. BaseballOS
+started as an attempt to combine software engineering, data analysis, and
+baseball decision-making into a system that emphasizes trust,
+explainability, and defensible recommendations over black-box outputs.
 
 ## Problem
 
@@ -34,6 +42,10 @@ staff makes, but the signal is scattered across pitch counts,
 back-to-back appearances, workload trends, rest windows, freshness, and
 confidence. I wanted BaseballOS to collapse that noise into a defensible
 decision-support layer instead of a raw stat table.
+
+Built around league-wide MLB data ingestion with automated
+synchronization, availability analysis, fatigue modeling, and
+recommendation workflows.
 
 ## Architecture
 
@@ -45,7 +57,7 @@ Five core systems backed by a shared ingestion and trust layer:
    appearances, pitch counts, and recovery windows.
 3. **Availability engine** — classifies pitchers into Monitor, Limited,
    Avoid, and Unavailable categories.
-4. **Recommendation engine** — produces explainable candidate
+4. **Recommendation engine** — produces explainable pitcher
    recommendations with fail-closed eligibility gates.
 5. **Trust and transparency layer** — surfaces freshness, confidence,
    limitations, and recommendation reasoning directly in the UI.
@@ -70,6 +82,16 @@ Five core systems backed by a shared ingestion and trust layer:
   behavior remains auditable.
 - Making freshness and sync status visible instead of silently trusting
   stale data.
+
+## Current Capabilities
+
+- Automated MLB data ingestion and synchronization
+- Bullpen fatigue scoring and workload analysis
+- Availability classification across Monitor, Limited, Avoid, and
+  Unavailable states
+- Explainable pitcher recommendations with eligibility gating
+- Freshness and trust transparency throughout the dashboard
+- Historical workload and bullpen decision-support workflows
 
 ## Status
 
