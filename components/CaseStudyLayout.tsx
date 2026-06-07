@@ -11,6 +11,7 @@ export function CaseStudyLayout({
   children: ReactNode;
 }) {
   const { title, tagline, status, stack, role, period, links, slug } = frontmatter;
+  const label = frontmatter.label ?? slug;
 
   return (
     <article className="py-14 md:py-20">
@@ -27,7 +28,7 @@ export function CaseStudyLayout({
       <header className="mb-10 border-b border-line pb-10">
         <div className="mb-5 flex flex-wrap items-center gap-3">
           <span className="rounded-sm border border-line-hi bg-bg-2 px-2 py-[3px] font-mono text-xs text-ink-dim">
-            {slug}
+            {label}
           </span>
           <StatusTag status={status} />
         </div>

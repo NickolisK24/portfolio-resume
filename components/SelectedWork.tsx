@@ -8,7 +8,7 @@ export async function SelectedWork() {
 
   return (
     <section id="work" className="scroll-mt-20 border-b border-line py-14">
-      <SectionHead num="01" title="Selected Work" count={`[ ${count} projects ]`} />
+      <SectionHead num="01" title="Selected Work" count={`[ ${count} flagship projects ]`} />
 
       <div className="flex flex-col">
         {projects.map((p, i) => (

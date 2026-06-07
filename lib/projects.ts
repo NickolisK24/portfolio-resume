@@ -3,12 +3,19 @@ import path from "node:path";
 import matter from "gray-matter";
 import { z } from "zod";
 
-export const projectStatusSchema = z.enum(["active", "deployed", "in-progress"]);
+export const projectStatusSchema = z.enum([
+  "active",
+  "deployed",
+  "in-progress",
+  "deployed · active",
+  "active · systems-heavy",
+]);
 
 export type ProjectStatus = z.infer<typeof projectStatusSchema>;
 
 export const projectFrontmatterSchema = z.object({
   slug: z.string().regex(/^[a-z0-9-]+$/, "slug must be kebab-case"),
+  label: z.string().min(1).optional(),
   title: z.string().min(1),
   tagline: z.string().min(1),
   status: projectStatusSchema,

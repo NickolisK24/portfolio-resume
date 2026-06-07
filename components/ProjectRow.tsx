@@ -4,6 +4,7 @@ import { StatusTag } from "./StatusTag";
 
 export function ProjectRow({ project, index }: { project: ProjectFrontmatter; index: number }) {
   const idx = String(index + 1).padStart(3, "0");
+  const label = project.label ?? project.slug;
   return (
     <Link
       href={`/work/${project.slug}`}
@@ -21,7 +22,7 @@ export function ProjectRow({ project, index }: { project: ProjectFrontmatter; in
             {project.title}
           </h3>
           <span className="rounded-sm border border-line-hi bg-bg-2 px-2 py-[3px] font-mono text-xs text-ink-dim">
-            {project.slug}
+            {label}
           </span>
           <StatusTag status={project.status} />
         </div>
