@@ -14,7 +14,7 @@ stack:
   - pytest
   - GitHub Actions
 role: Solo engineer
-period: "2025"
+period: 2025 — Present
 order: 1
 featured: true
 summary: >
@@ -27,40 +27,55 @@ links:
   repo: https://github.com/NickolisK24/bullpen-intel-engine
 ---
 
-{/* EDIT ME — below is scaffolded copy. Rewrite freely. */}
-
 ## Problem
 
 Bullpen management is one of the highest-leverage decisions a coaching
-staff makes, and the signal is scattered across pitch counts, back-to-back
-appearances, warm-up usage, and recent workload — none of which live in
-one place. I wanted a tool that collapsed that noise into a single,
-defensible fatigue score you could act on.
+staff makes, but the signal is scattered across pitch counts,
+back-to-back appearances, workload trends, rest windows, freshness, and
+confidence. I wanted BaseballOS to collapse that noise into a defensible
+decision-support layer instead of a raw stat table.
 
 ## Architecture
 
-Three modules backed by a shared ingestion layer:
+Five core systems backed by a shared ingestion and trust layer:
 
-1. **Ingestion** — pulls the MLB Stats API on a schedule, normalizes
-   events into a Postgres schema that survives API shape changes.
-2. **Fatigue engine** — weighted composite model over recent appearances,
-   pitch counts, and rest days. Output is a score plus a risk tier.
-3. **UX layer** — React + Tailwind front end with a bullpen board, a
-   prospects view, and per-player drilldowns.
+1. **Data ingestion** — synchronizes MLB game and player data into a
+   durable Postgres model.
+2. **Fatigue engine** — quantifies recent workload risk using
+   appearances, pitch counts, and recovery windows.
+3. **Availability engine** — classifies pitchers into Monitor, Limited,
+   Avoid, and Unavailable categories.
+4. **Recommendation engine** — produces explainable candidate
+   recommendations with fail-closed eligibility gates.
+5. **Trust and transparency layer** — surfaces freshness, confidence,
+   limitations, and recommendation reasoning directly in the UI.
 
 ## Key engineering decisions
 
-- **Flask over FastAPI** for this one — I wanted the simplest possible
-  backend while the model was still in flux.
-- **Risk tiers, not just scores** — coaches don't want a raw number, they
-  want "green / yellow / red" with the reason.
-- **Model weights are config, not code** — tuning doesn't require a
-  deploy.
+- **Fail-closed recommendations** — the system refuses to recommend when
+  identity, freshness, confidence, or availability requirements are not
+  met.
+- **Policy separated from scoring** — recommendation behavior is governed
+  by explicit eligibility rules instead of hidden ranking assumptions.
+- **Trust metadata travels with the output** — freshness, confidence,
+  limitations, and reasoning remain visible to the user.
+- **Configurable thresholds** — workload and availability rules can
+  evolve without hardcoding every decision.
+
+## Engineering Challenges
+
+- Designing recommendation outputs that fail closed instead of guessing.
+- Keeping trust metadata attached to every recommendation and UI state.
+- Separating policy decisions from scoring logic so recommendation
+  behavior remains auditable.
+- Making freshness and sync status visible instead of silently trusting
+  stale data.
 
 ## Status
 
-Deployed and iterating. Next up: pitch-mix-aware fatigue and a prospect
-development timeline view.
+Deployed and actively evolving. Current focus is expanding pitcher search,
+improving bullpen decision workflows, and preparing the recommendation
+system for broader ranking and selection logic.
 
 ## Links
 
